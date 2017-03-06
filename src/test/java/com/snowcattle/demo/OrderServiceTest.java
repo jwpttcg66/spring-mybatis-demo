@@ -1,7 +1,7 @@
 package com.snowcattle.demo;
 
-import com.snowcattle.demo.entity.Order;
-import com.snowcattle.demo.service.OrderService;
+import com.snowcattle.demo.entity.Student;
+import com.snowcattle.demo.service.StudentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +16,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class OrderServiceTest {
 
     @Autowired
-    private OrderService orderService;
+    private StudentService studentService;
 
     @Test
     public void test(){
-        Order order = new Order();
-        order.setOrderId(Integer.MAX_VALUE);
-        order.setUserId(1);
-        order.setStatus("测试最大数据");
-//        orderService.insertOrder(order);
+        Student stud = new Student();
+        long ts = System.currentTimeMillis();
+        stud.setName("stud_" + ts);
+        stud.setEmail("stud_" + ts + "@gmail.com");
+        Student student = studentService.createStudent(stud);
+        System.err.println("CreatedStudent: " + student);
     }
 }

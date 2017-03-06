@@ -19,12 +19,11 @@
     </settings>
 
     <typeAliases>
-        <typeAlias alias="order" type="com.snowcattle.demo.entity.Order"/>
+        <typeAlias alias="student" type="com.snowcattle.demo.entity.Student"/>
     </typeAliases>
 
     <mappers>
         <mapper resource="mybatis3/mapper/StudentMapper.xml"/>
-        <mapper resource="mybatis3/mapper/order.xml"/>
     </mappers>
 
 </configuration>

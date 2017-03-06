@@ -20,7 +20,7 @@
 
 	<context:component-scan base-package="com.snowcattle.demo" />
 
-	<context:property-placeholder location="classpath:application.properties" />
+	<context:property-placeholder location="classpath:db.properties" />
 
 
 	<tx:annotation-driven transaction-manager="transactionManager"/>
