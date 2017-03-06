@@ -6,14 +6,10 @@
 <mapper namespace="com.snowcattle.demo.mapper.StudentMapper">
 
 
-    <resultMap type="Address" id="AddressResult">
-        <id property="addrId" column="addr_id"/>
-        <result property="street" column="street"/>
-        <result property="city" column="city"/>
-        <result property="state" column="state"/>
-        <result property="zip" column="zip"/>
-        <result property="country" column="country"/>
+    <resultMap type="Student" id="StudentWithAddressResult">
+        <id 	property="studId" column="stud_id"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
     </resultMap>
-
 
 </mapper>

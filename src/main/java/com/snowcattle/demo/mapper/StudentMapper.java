@@ -16,7 +16,7 @@ public interface StudentMapper
 {
 
 
-    @Insert("insert into students(name,email,addr_id, phone) values(#{name},#{email},#{address.addrId},#{phone})")
+    @Insert("insert into STUDENTS(name,email) values(#{name},#{email})")
     @Options(useGeneratedKeys=true, keyProperty="studId")
     void insertStudent(Student student);
 
