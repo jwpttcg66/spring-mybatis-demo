@@ -4,7 +4,6 @@ import com.snowcattle.demo.entity.Order;
 import com.snowcattle.demo.service.OrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -15,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = "classpath:db_applicationContext.xml")
 public class OrderServiceTest {
 
-    @Autowired
+//    @Autowired
     private OrderService orderService;
 
     @Test
@@ -24,6 +23,6 @@ public class OrderServiceTest {
         order.setOrderId(Integer.MAX_VALUE);
         order.setUserId(1);
         order.setStatus("测试最大数据");
-        orderService.insertOrder(order);
+//        orderService.insertOrder(order);
     }
 }

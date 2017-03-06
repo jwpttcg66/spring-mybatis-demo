@@ -13,8 +13,8 @@
                 <result column="status" property="status" jdbcType="VARCHAR"/>
         </resultMap>
 
-        <!--<insert id="insertOrder" parameterType="com.snowcattle.demo.entity.Order">-->
-                <!--insert into `t_order` values (#orderId#, #userId#, #status#)-->
-        <!--</insert>-->
+        <insert id="insertOrder" parameterType="com.snowcattle.demo.entity.Order">
+                insert into `t_order` values (#orderId#, #userId#, #status#)
+        </insert>
 
 </mapper>
