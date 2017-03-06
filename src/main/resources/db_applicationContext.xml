@@ -53,4 +53,9 @@
 		<property name="password" value="${jdbc.password}"/>
 	</bean>
 
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.snowcattle.demo"/>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+
 </beans>
