@@ -23,7 +23,7 @@
     </typeAliases>
 
     <mappers>
-        <mapper resource="mybatis3/mapper/StudentMapper.xml"/>
+        <mapper resource="mybatis3/mappers/StudentMapper.xml"/>
     </mappers>
 
 </configuration>
