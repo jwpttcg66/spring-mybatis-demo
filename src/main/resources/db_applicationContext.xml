@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:aop="http://www.springframework.org/schema/aop"
@@ -17,8 +17,34 @@
 						http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
 	<context:annotation-config />
+
 	<context:component-scan base-package="com.snowcattle.demo" />
-	<context:property-placeholder location="classpath:db.properties" />
+
+	<context:property-placeholder location="classpath:application.properties" />
+
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- <mybatis:scan base-package="com.mybatis3.mappers"/> -->
+
+	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+      <property name="basePackage" value="com.mybatis3.mappers" />
+    </bean> -->
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="typeAliasesPackage" value="com.snowcattle.demo.entity"/>
+		<property name="typeHandlersPackage" value="com.snowcattle.demo.handler"/>
+		<property name="mapperLocations" value="classpath*:mybatis3/mapper/sqlMapConfig.xml" />
+	</bean>
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}"/>
@@ -27,20 +53,4 @@
 		<property name="password" value="${jdbc.password}"/>
 	</bean>
 
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="typeAliasesPackage" value="com.snowcattle.demo.entity"/>
-		<property name="typeHandlersPackage" value="com.snowcattle.demo.handler"/>
-		<property name="configLocation" value="classpath*:mybatis/sqlMapConfig.xml" />
-	</bean>
-
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory"/>
-	</bean>
-
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.snowcattle.demo.mapper"/>
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionTemplate"/>
-		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
-	</bean>
 </beans>

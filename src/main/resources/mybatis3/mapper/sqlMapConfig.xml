@@ -23,7 +23,7 @@
     </typeAliases>
 
     <mappers>
-        <mapper resource="mybatis/mapper/order.xml"/>
+        <mapper resource="mybatis3/mapper/order.xml"/>
     </mappers>
 
 </configuration>
